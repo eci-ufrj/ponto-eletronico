@@ -13,5 +13,5 @@ class Boss(Person):
     
 class Worker(Person):
     speciality = models.CharField(max_length=100)
-    workplaces = models.ManyToManyRel(House, related_name='workers')
+    workplaces = models.ManyToManyField(House)
     
