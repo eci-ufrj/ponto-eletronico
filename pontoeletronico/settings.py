@@ -38,7 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'backend.pessoal',
     'backend.places',
+    'backend.schedule',
     'south',
+    'restless'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,8 +88,7 @@ STATIC_URL = '/static/'
 
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
-DATABASES['default'] =  dj_database_url.config()
-
+DATABASES['default'] = dj_database_url.config(env='DATABASE_URL', default='mysql://root:root@localhost:3306/ponto_eletronico')
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
