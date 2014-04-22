@@ -40,7 +40,9 @@ INSTALLED_APPS = (
     'backend.places',
     'backend.schedule',
     'south',
-    'restless'
+    'webservices',
+    'webservices.personal',
+    'webservices.timetable'
 )
 
 MIDDLEWARE_CLASSES = (

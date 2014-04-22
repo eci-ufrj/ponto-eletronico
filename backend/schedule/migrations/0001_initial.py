@@ -36,20 +36,17 @@ class Migration(SchemaMigration):
 
     models = {
         u'pessoal.boss': {
-            'Meta': {'object_name': 'Boss', '_ormbases': [u'pessoal.Person']},
-            'house': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['places.House']"}),
-            u'person_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['pessoal.Person']", 'unique': 'True', 'primary_key': 'True'})
-        },
-        u'pessoal.person': {
-            'Meta': {'object_name': 'Person'},
+            'Meta': {'object_name': 'Boss'},
+            'house': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['places.House']", 'null': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '200'})
         },
         u'pessoal.worker': {
-            'Meta': {'object_name': 'Worker', '_ormbases': [u'pessoal.Person']},
-            u'person_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': u"orm['pessoal.Person']", 'unique': 'True', 'primary_key': 'True'}),
-            'speciality': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'workplaces': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['places.House']", 'symmetrical': 'False'})
+            'Meta': {'object_name': 'Worker'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
+            'speciality': ('django.db.models.fields.CharField', [], {'max_length': '100', 'null': 'True'}),
+            'workplaces': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['places.House']", 'null': 'True', 'symmetrical': 'False'})
         },
         u'places.house': {
             'Meta': {'object_name': 'House'},
