@@ -1,7 +1,6 @@
 from django.http.response import HttpResponse
 from utils.json_utils import json_view
 
-
 # Create your views here.
 
 @json_view
@@ -23,5 +22,3 @@ def add_endtime(request):
 @json_view
 def get_users(request):
     pass
-
-
