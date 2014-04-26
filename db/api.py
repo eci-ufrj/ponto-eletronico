@@ -11,7 +11,7 @@ def addUser(name, username):
     user.name = name
     user.username = username
     user.save()
-    return {'user_id': user.pk}
+    return {'user_id': user.pk, 'success':True}
 
 
 def addPlace(name, owner_id, address=None, position=None):
@@ -37,7 +37,7 @@ def addTimeCard(place_id):
     return {'timecard_id': tc.pk}
 
 
-def addTimeCardEntry(worker_id, timecard_id, start_time=datetime.time.now(), end_time=None):
+def addTimeCardEntry(worker_id, timecard_id, start_time=datetime.datetime.now(), end_time=None):
     tc = TimeCard.objects.get(pk=timecard_id)
     try:
         wk = User.objects.get(pk=worker_id, workplaces_id=tc.place_id)
@@ -51,7 +51,7 @@ def addTimeCardEntry(worker_id, timecard_id, start_time=datetime.time.now(), end
     tce.save()
     return {'time_card_entry_id': tce.pk}
 
-def addEndTimeToTimeCardEntry(tce_id, end_time=datetime.time.now()):
+def addEndTimeToTimeCardEntry(tce_id, end_time=datetime.datetime.now()):
     tce = TimeCardEntry.objects.get(pk=tce_id)
     tce.end_time = end_time
     tce.save()
